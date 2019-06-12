@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: k8-app-py-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: k8-app-py-pod
+  template:
+    metadata:
+      labels:
+        app: k8-app-py-pod
+    spec:
+      containers: 
+      - image: "gcr.io/steam-boulevard-212521/k8_app_py:vp.0.0.1a"
+      #- image: "poxstone/k8_app_py:vp.0.0.1a"
+        name: k8-app-py-container
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+        env:
+        - name: APP_PORT
+          value: '5000'
+        - name: WORKERS
+          value: '3'
+        - name: TIMEOUT
+          value: '240'
+        - name: VERSION_DEP
+          value: 'vp.0.0.1a'
+        ports:
+        - containerPort: 5000
+          name: http
+          protocol: TCP
+        volumeMounts:
+        - mountPath: "/volume-py/"
+          name: app-py-volume
+      volumes:
+      - name: app-py-volume
+        persistentVolumeClaim:
+          claimName: app-py-volume-claim
+          readOnly: false

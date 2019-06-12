@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: k8-serv-js-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: k8-serv-js-pod
+  template:
+    metadata:
+      labels:
+        app: k8-serv-js-pod
+    spec:
+      containers: 
+      - image: "gcr.io/steam-boulevard-212521/k8_serv_js:vp.0.0.1b"
+      #- image: "poxstone/k8_serv_js:vp.0.0.1b"
+        name: k8-serv-js-container
+        env:
+        - name: APP_PORT
+          value: '3000'
+        - name: DB_HOST
+          value: 'k8-cloudsql-external-service'
+        - name: DB_USER
+          value: "root"
+        - name: DB_PASS
+          value: "my_db_secret"
+        - name: DB_SCHE
+          value: 'items'
+        - name: REDIS_HOST
+          value: 'k8-redis-external-service'
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
