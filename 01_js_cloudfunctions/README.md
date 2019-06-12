@@ -1,4 +1,4 @@
-# stress
+# stress cloud functions
 ## vars
 ```bash
 export PROJECT="$(gcloud config get-value project)";

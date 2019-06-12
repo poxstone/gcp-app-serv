@@ -1,0 +1,38 @@
+swagger: "2.0"
+info:
+  title: "appengine test"
+  description: "Test stress appengine"
+  version: "1.0.0"
+host: "jsstress-dot-steam-boulevard-212521.appspot.com"
+#host: "localhost:3000"
+schemes:
+  - "https"
+  #- "http"
+paths:
+  "/":
+    post:
+      tags:
+      - 'Test Stress'
+      description: 'Stress cpu'
+      operationId: 'test_stress'
+      produces:
+      - 'text/plain'
+      parameters:
+      - name: body
+        in: body
+        description: body json
+        required: true
+        schema:
+          type: object
+          properties:
+            timeSleep:
+              type: integer
+              example: 5
+            date:
+              type: string
+              example: '2019-06-12_17:48:56.118440920'
+      responses:
+        200:
+          description: 'Message ok.'
+          schema:
+            type: object
