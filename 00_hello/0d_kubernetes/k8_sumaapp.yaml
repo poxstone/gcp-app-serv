@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: k8-sumaapp-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: k8-sumaapp-pod
+  template:
+    metadata:
+      labels:
+        app: k8-sumaapp-pod
+    spec:
+      containers: 
+      - image: "gcr.io/${PROJECT_ID}/k8_sumaapp:v1"
+      #- image: "poxstone/k8_serv_js:vp.0.0.1b"
+        name: k8-sumaapp
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+# kubectl apply -f k8_sumaapp.yaml
