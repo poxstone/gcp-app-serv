@@ -15,10 +15,11 @@ spec:
     spec:
       containers: 
       - image: "gcr.io/${PROJECT_ID}/k8_sumaapp:v1"
-      #- image: "poxstone/k8_serv_js:vp.0.0.1b"
         name: k8-sumaapp
         ports:
         - containerPort: 3000
           name: http
           protocol: TCP
+# docker tag poxstone/sumaapp gcr.io/${PROJECT_ID}/k8_sumaapp:v1
+# docker push gcr.io/${PROJECT_ID}/k8_sumaapp:v1
 # kubectl apply -f k8_sumaapp.yaml
