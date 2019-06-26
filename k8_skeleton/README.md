@@ -24,15 +24,13 @@ gcloud services enable servicenetworking.googleapis.com --project="${PROJECT}";
 
 
 # create redis instance
-gcloud redis instances create "${REDIS_NAME}" --region="${REGION}" --project="${PROJECT}" -q --async;
 gcloud beta sql instances create "${SQL_NAME}" --zone="${ZONE}" --project="${PROJECT}" --authorized-networks=$(curl ipinfo.io/ip) --root-password="${SQL_PASS}" --assign-ip --async;
+gcloud redis instances create "${REDIS_NAME}" --region="${REGION}" --project="${PROJECT}" -q --async;
 gcloud container clusters create "${CLUSTER}" --machine-type "n1-standard-1" --num-nodes=2 --disk-size "100" --preemptible  --enable-autorepair --enable-ip-alias --enable-autoscaling --min-nodes "2" --max-nodes "5" --zone us-east1-b --project "${PROJECT}" -q --async;
 
 # get REDIS ip
 gcloud redis instances describe "${REDIS_NAME}" --region="${REGION}" --project="${PROJECT}" | grep host | awk -F ':' '{print($2)}';
 
-# create CLOUDSQL instance
-gcloud beta sql instances create "${SQL_NAME}" --zone="${ZONE}" --project="${PROJECT}" --authorized-networks=$(curl ipinfo.io/ip) --root-password="${SQL_PASS}" --assign-ip;
 # add external ingress
 gcloud beta sql instances patch "${SQL_NAME}" --assign-ip --project="${PROJECT}" --authorized-networks=$(curl ipinfo.io/ip) -q;
 # GET TO UI AND ASSIGN PRIVATE IP
