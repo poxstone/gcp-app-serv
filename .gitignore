@@ -22,3 +22,5 @@ env_virtual/*
 
 node_modules/*
 package-lock.json
+k8_skeleton/k8_app_py/virtual_env/*
+01_js_cloudfunctions/node_modules/
