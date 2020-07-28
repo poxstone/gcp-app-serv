@@ -28,3 +28,12 @@ docker rm -f k8_app_py;
 # curl whren use "cpus" this uses stress
 curl -X GET "http://localhost:8080/?sleep=5&cpus=4&date=$(date -u '+%Y-%m-%d_%H:%M:%S.%N')";
 ```
+
+## Test GET (with stress)
+**params GET**
+- path = /my/sub/path
+
+```bash
+# curl whren use "cpus" this uses stress
+curl -X GET "http://localhost:8080/get/google.com?path=/search&q=perro";
+```
