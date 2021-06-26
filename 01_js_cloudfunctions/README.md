@@ -9,7 +9,7 @@ export PROJECT="$(gcloud config get-value project)";
 npm install express body-parser;
 node _server.js;
 # run
-curl -X POST localhost:3000 -H "Content-Type: application/json" -d "{\"timeSleep\":2, \"date\":\"$(date -u '+%Y-%m-%d_%H:%M:%S.%N')\"}";
+curl -X POST localhost:4000 -H "Content-Type: application/json" -d "{\"timeSleep\":2, \"date\":\"$(date -u '+%Y-%m-%d_%H:%M:%S.%N')\"}";
 ```
 
 ## deploy and test
@@ -20,7 +20,4 @@ gcloud functions deploy jsStress --entry-point="jsStress" --runtime nodejs10 --m
 
 # test
 for i in {1..20};do curl -k -X POST "https://us-central1-${PROJECT}.cloudfunctions.net/jsStress" -H "Content-Type: application/json" -d "{\"timeSleep\":2, \"date\":\"$(date -u '+%Y-%m-%d_%H:%M:%S.%N')-${i}\"}" & date; done;
-
-
-
 ```

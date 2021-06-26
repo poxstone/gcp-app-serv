@@ -5,24 +5,24 @@
 # install dependencies
 npm install;
 
-# run app port 3000
+# run app port 4000
 npm start;
 ```
 
 ## 2. Run Build/Docker
 ```bash
 # build
-docker build -t poxstone/k8_serv_js:vp.0.0.1b ./;
+docker build -t poxstone/k8_serv_js:vp.0.0.1c ./;
 
 # run ---net required for external connection
-docker run --rm -it --name k8_serv_js --net host -p 3000:3000 \
--e APP_PORT=3000 \
+docker run --rm -it --name k8_serv_js --net host -p 4000:4000 \
+-e APP_PORT=4000 \
 -e DB_HOST='127.0.0.1' \
 -e DB_USER='my_db_user' \
 -e DB_PASS='my_db_secret' \
 -e DB_SCHE='items' \
 -e REDIS_HOST='localhost' \
-poxstone/k8_serv_js:vp.0.0.1b;
+poxstone/k8_serv_js:vp.0.0.1c;
 ```
 
 ##. Run redis

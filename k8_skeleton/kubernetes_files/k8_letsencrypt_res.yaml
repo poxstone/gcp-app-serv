@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: k8-letsencrypt-res-deployment
@@ -14,7 +14,7 @@ spec:
         app: k8-letsencrypt-res-pod
     spec:
       containers: 
-      - image: "gcr.io/steam-boulevard-212521/k8_letsencrypt_res:vl.0.0.1a"
+      - image: "gcr.io/www-eaga/k8_letsencrypt_res:vl.0.0.1a"
       #- image: "poxstone/k8_app_py:vl.0.0.1a"
         name: k8-letsencrypt-res-container
         env:

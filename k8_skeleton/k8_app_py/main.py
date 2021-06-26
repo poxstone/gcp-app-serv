@@ -12,6 +12,9 @@ HOST = socket.gethostname()
 
 app = Flask(__name__)
 
+@app.route("/")
+def rootdir():
+    return 'ok'
 
 @app.route("/cpu")
 def app_root():

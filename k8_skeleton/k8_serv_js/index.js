@@ -3,11 +3,11 @@ var mysql = require('mysql');
 var redis = require('redis');
 
 const ENV      = process.env;
-const PORT     = ENV.APP_PORT || 3000
+const PORT     = ENV.APP_PORT || 4000
 const REDIS    = {host: ENV.REDIS_HOST || 'localhost',
                   port: ENV.REDIS_PORT || 6379};
 const dbConfig = {host     : ENV.DB_HOST || '0.0.0.0',
-                  user     : ENV.DB_USER || 'my_db_user',
+                  user     : ENV.DB_USER || 'root',
                   password : ENV.DB_PASS || 'my_db_secret',
                   db : ENV.DB_SCHE || 'items'}
 console.log(ENV);
@@ -16,11 +16,19 @@ var app = express();
 
 /* sql connections */
 const sqlCli = mysql.createConnection(dbConfig);
-sqlCli.connect();
+try {
+  sqlCli.connect();
+} catch(e) {
+  console.log('error on load SQL', dbConfig);
+}
 
 /* redis connection */
 redisCli = redis.createClient(REDIS.port, REDIS.host);
-redisCli.on('error', err => console.error('ERR:REDIS:', err));
+try {
+  redisCli.on('error', err => console.error('ERR:REDIS:', err));
+} catch (e) {
+  console.log('error on load redis', REDIS);
+}
 
 
 /* Routes */

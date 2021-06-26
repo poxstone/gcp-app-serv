@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER Oscar Ortiz <posxtone@gmail.com>
+MAINTAINER poxstone <posxtone@gmail.com>
 
 ENV APP_PORT=8081
 ENV GUNICORN_MODULE='main'
@@ -8,7 +8,7 @@ ENV GUNICORN_USER='user_gun'
 ENV APP_PATH='/app'
 ENV WORKERS=3 
 ENV TIMEOUT=120
-ENV VERSION_DEP='vp.0.0.1a'
+ENV VERSION_DEP='vp.0.0.1c'
 
 RUN apk add --no-cache python3 \
     && python3 -m ensurepip \

@@ -4,7 +4,7 @@ info:
   description: "Test stress appengine"
   version: "1.0.0"
 host: "jsstress-dot-steam-boulevard-212521.appspot.com"
-#host: "localhost:3000"
+#host: "localhost:4000"
 schemes:
   - "https"
   #- "http"

@@ -9,7 +9,7 @@ export PROJECT="$(gcloud config get-value project)";
 npm install;
 node app.js;
 # run
-curl -X POST localhost:3000 -H "Content-Type: application/json" -d "{\"timeSleep\":2, \"date\":\"$(date -u '+%Y-%m-%d_%H:%M:%S.%N')\"}";
+curl -X POST localhost:4000 -H "Content-Type: application/json" -d "{\"timeSleep\":2, \"date\":\"$(date -u '+%Y-%m-%d_%H:%M:%S.%N')\"}";
 ```
 
 ## deploy and test

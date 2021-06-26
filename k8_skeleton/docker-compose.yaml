@@ -2,13 +2,13 @@ version: '3'
 
 services:
   k8_app_py:
-    image: poxstone/k8_app_py:vp.0.0.1a
+    image: poxstone/k8_app_py:vp.0.0.c
     build:
       context: ./k8_app_py/
     environment:
     - APP_PORT=5000
     - WORKERS=3 
     - TIMEOUT=120
-    - VERSION_DEP=vp.0.0.1a
+    - VERSION_DEP=vp.0.0.1c
     ports:
     - "8080:5000"

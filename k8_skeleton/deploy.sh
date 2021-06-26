@@ -8,15 +8,16 @@ export REGION="us-east1";
 export ZONE="${REGION}-b";
 export REDIS_NAME="k8-redis";
 export SQL_NAME="k8-sql";
-export VERSION_PY="vp.0.0.1a";
-export VERSION_JS="vp.0.0.1b";
-export VERSION_LETS="vl.0.0.1a";
+export VERSION_PY="vp.0.0.1c";
+export VERSION_JS="vp.0.0.1c";
+export VERSION_LETS="vl.0.0.1c";
 export CLUSTER="dev-cluster";
+export SUBNET="default"; # << CHANGE
 export DOMAIN="dev.eforcers.com.co"; # << CHANGE
-export SQL_IP="10.83.2.3"; # << CHANGE
+export SQL_IP="10.83.3.6"; # << CHANGE
 export SQL_USER="root"; # << CHANGE
 export SQL_PASS="my_db_secret"; # << CHANGE
-export REDIST_IP="10.0.0.3"; # << CHANGE
+export REDIST_IP="10.0.41.123"; # << CHANGE
 
 
 # replace proyect for images
@@ -56,7 +57,7 @@ gcloud auth configure-docker -q;
 
 
 # create cluster
-gcloud container clusters create "${CLUSTER}" --machine-type "n1-standard-1" --num-nodes=2 --disk-size "100" --preemptible  --enable-autorepair --enable-ip-alias --enable-autoscaling --min-nodes "2" --max-nodes "5" --zone us-east1-b --project "${PROJECT}" -q;
+gcloud container clusters create "${CLUSTER}" --machine-type "n1-standard-1" --num-nodes=2 --disk-size "100" --preemptible  --enable-autorepair --enable-ip-alias --enable-autoscaling --min-nodes "2" --max-nodes "5" --zone us-east1-b --project "${PROJECT}" --subnetwork "${SUBNET}" -q;
 # get cluster credentials
 gcloud container clusters get-credentials "${CLUSTER}" --project "${PROJECT}" --zone="${ZONE}";
 

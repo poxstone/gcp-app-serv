@@ -17,7 +17,7 @@ spec:
       - image: "gcr.io/${PROJECT_ID}/k8_sumaapp:v1"
         name: k8-sumaapp
         ports:
-        - containerPort: 3000
+        - containerPort: 4000
           name: http
           protocol: TCP
 # docker tag poxstone/sumaapp gcr.io/${PROJECT_ID}/k8_sumaapp:v1

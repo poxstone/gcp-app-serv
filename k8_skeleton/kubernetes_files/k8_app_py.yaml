@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: k8-app-py-deployment
@@ -14,8 +14,8 @@ spec:
         app: k8-app-py-pod
     spec:
       containers: 
-      - image: "gcr.io/steam-boulevard-212521/k8_app_py:vp.0.0.1a"
-      #- image: "poxstone/k8_app_py:vp.0.0.1a"
+      - image: "gcr.io/www-eaga/k8_app_py:vp.0.0.1c"
+      #- image: "poxstone/k8_app_py:vp.0.0.1c"
         name: k8-app-py-container
         resources:
           requests:
@@ -29,7 +29,7 @@ spec:
         - name: TIMEOUT
           value: '240'
         - name: VERSION_DEP
-          value: 'vp.0.0.1a'
+          value: 'vp.0.0.1c'
         ports:
         - containerPort: 5000
           name: http

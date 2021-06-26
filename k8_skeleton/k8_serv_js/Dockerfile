@@ -1,7 +1,7 @@
 FROM node:10-alpine
 MAINTAINER Oscar Ortiz <posxtone@gmail.com>
 
-ENV APP_PORT=3000
+ENV APP_PORT=4000
 ENV APP_PATH='/home/node/app'
 ENV DB_HOST='my_db_host'
 ENV DB_USER='my_db_user'
